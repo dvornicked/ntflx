@@ -26,6 +26,10 @@ export const theme: Theme = {
 		root: {
 			fontFamily: 'default',
 			fontSize: 1,
+			a: {
+				color: 'text',
+				textDecoration: 'none',
+			},
 		},
 	},
 }
