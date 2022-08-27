@@ -1,12 +1,13 @@
 import Logo from './Logo/Logo'
 import Navigation from './Navigation/Navigation'
+import Search from './Search/Search'
 
 const Header = () => {
 	return (
 		<div
 			sx={{
 				display: 'grid',
-				gridTemplateColumns: 'auto 1fr 1fr 1fr',
+				gridTemplateColumns: 'auto auto 1fr',
 				alignItems: 'center',
 
 				borderBottom: '2px solid',
@@ -16,6 +17,11 @@ const Header = () => {
 		>
 			<Logo />
 			<Navigation />
+			<Search
+				sx={{
+					justifySelf: 'end',
+				}}
+			/>
 		</div>
 	)
 }

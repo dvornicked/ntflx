@@ -11,6 +11,9 @@ const Layout = (props: ILayoutProps) => {
 				minHeight: '100vh',
 				maxWidth: '1200px',
 				mx: 'auto',
+				'& *': {
+					outline: '0px solid',
+				},
 			}}
 		>
 			<Header />

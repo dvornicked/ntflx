@@ -27,6 +27,9 @@ export const theme: Theme = {
 				listStyle: 'none',
 				paddingLeft: 0,
 			},
+			svg: {
+				fontSize: 3,
+			},
 		},
 	},
 }
