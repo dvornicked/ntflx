@@ -14,14 +14,6 @@ export const theme: Theme = {
 		default: 'Nunito, Helvetica, sans-serif',
 	},
 	fontSizes: [12, 14, 16, 24],
-	fontWeights: {
-		body: 400,
-		heading: 700,
-	},
-	lineHeights: {
-		body: '22px',
-		heading: '30px',
-	},
 	styles: {
 		root: {
 			fontFamily: 'default',
