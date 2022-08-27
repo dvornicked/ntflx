@@ -29,6 +29,11 @@ export const theme: Theme = {
 			a: {
 				color: 'text',
 				textDecoration: 'none',
+				cursor: 'pointer',
+			},
+			ul: {
+				listStyle: 'none',
+				paddingLeft: 0,
 			},
 		},
 	},

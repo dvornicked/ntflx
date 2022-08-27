@@ -1,4 +1,5 @@
 import Logo from './Logo/Logo'
+import Navigation from './Navigation/Navigation'
 
 const Header = () => {
 	return (
@@ -14,6 +15,7 @@ const Header = () => {
 			}}
 		>
 			<Logo />
+			<Navigation />
 		</div>
 	)
 }
