@@ -17,6 +17,7 @@ const Layout = (props: ILayoutProps) => {
 			}}
 		>
 			<Header />
+			{children}
 		</div>
 	)
 }

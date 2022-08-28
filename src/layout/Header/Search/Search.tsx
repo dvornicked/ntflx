@@ -39,11 +39,13 @@ const Search = (props: ISearchProps) => {
 					pl: 2,
 					cursor: 'pointer',
 				}}
-				onClick={() =>
-					searchValue
-						? setSearchValue('')
-						: asPath !== '/search' && push('/search')
-				}
+				onClick={() => {
+					if (searchValue) setSearchValue('')
+					else {
+						push('/search')
+						setSearchValue('Search')
+					}
+				}}
 			/>
 			<input
 				value={searchValue}
@@ -74,6 +76,7 @@ const Search = (props: ISearchProps) => {
 								height: '100%',
 								justifySelf: 'end',
 								position: 'relative',
+								cursor: 'pointer',
 							}}
 						/>
 					</div>
