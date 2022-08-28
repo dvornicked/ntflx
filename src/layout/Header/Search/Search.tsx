@@ -1,9 +1,16 @@
+import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { IoSearch } from 'react-icons/io5'
+import { IoClose, IoSearch } from 'react-icons/io5'
+import { Spinner } from 'theme-ui'
+import { useDebounce } from '../../../hooks/useDebounce'
 import { ISearchProps } from './Search.interface'
+import SearchList from './SearchList/SearchList'
 
 const Search = (props: ISearchProps) => {
 	const [searchValue, setSearchValue] = useState('Search')
+	const [isLoading, setIsLoading] = useState(false)
+	const debouncedSearchValue = useDebounce(searchValue, 500)
+	const { push, asPath } = useRouter()
 	return (
 		<div
 			sx={{
@@ -18,10 +25,20 @@ const Search = (props: ISearchProps) => {
 				border: '2px solid',
 				borderImage:
 					'linear-gradient(to bottom, transparent 5%, rgba(80,80,80,.5) 50%, transparent 95%) 1',
+				position: 'relative',
 			}}
 			{...props}
 		>
-			<IoSearch />
+			<IoSearch
+				sx={{
+					height: '100%',
+				}}
+				onClick={() =>
+					searchValue
+						? setSearchValue('')
+						: asPath !== '/search' && push('/search')
+				}
+			/>
 			<input
 				value={searchValue}
 				sx={{
@@ -37,6 +54,22 @@ const Search = (props: ISearchProps) => {
 				onBlur={() => setSearchValue('Search')}
 				onChange={e => setSearchValue(e.target.value)}
 			/>
+			{searchValue !== 'Search' &&
+				(isLoading ? (
+					<Spinner size={24} color="white" />
+				) : (
+					<IoClose
+						sx={{
+							height: '100%',
+							justifySelf: 'end',
+							position: 'relative',
+						}}
+						onClick={() => setSearchValue('Search')}
+					/>
+				))}
+			{searchValue !== ('Search' || '') && searchValue.length > 3 && (
+				<SearchList value={debouncedSearchValue} setIsLoading={setIsLoading} />
+			)}
 		</div>
 	)
 }
