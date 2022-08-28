@@ -21,7 +21,6 @@ const Search = (props: ISearchProps) => {
 				justifyContent: 'end',
 				alignItems: 'center',
 				lineHeight: 0,
-				cursor: 'pointer',
 				pr: 2,
 				borderRight: '2px solid',
 				borderImage:
@@ -38,6 +37,7 @@ const Search = (props: ISearchProps) => {
 					borderImage:
 						'linear-gradient(to bottom, transparent 5%, rgba(80,80,80,.5) 50%, transparent 95%) 1',
 					pl: 2,
+					cursor: 'pointer',
 				}}
 				onClick={() =>
 					searchValue

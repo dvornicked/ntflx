@@ -19,7 +19,6 @@ const SearchListWrapper = (props: ISearchListWrapperProps) => {
 				left: '0',
 				borderRadius: '0 0 0.5rem 0.5rem',
 				lineHeight: 'normal',
-				cursor: 'default',
 			}}
 		>
 			{children}
