@@ -1,13 +1,14 @@
 import Logo from './Logo/Logo'
 import Navigation from './Navigation/Navigation'
 import Search from './Search/Search'
+import User from './User/User'
 
 const Header = () => {
 	return (
 		<div
 			sx={{
 				display: 'grid',
-				gridTemplateColumns: 'auto auto 1fr',
+				gridTemplateColumns: 'auto auto 1fr auto',
 				alignItems: 'center',
 
 				borderBottom: '2px solid',
@@ -22,6 +23,7 @@ const Header = () => {
 					justifySelf: 'end',
 				}}
 			/>
+			<User />
 		</div>
 	)
 }
