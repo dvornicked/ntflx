@@ -36,10 +36,14 @@ const Navigation = () => {
 						<Link href={item.to}>
 							<a
 								sx={{
+									transition: 'color .3s ease-in-out',
 									fontSize: 2,
 									fontWeight: 'bold',
 									mx: 2,
 									color: asPath === item.to ? 'inherit' : 'muted',
+									'&:hover': {
+										color: asPath === item.to ? 'white' : 'gray',
+									},
 								}}
 							>
 								{item.label}
