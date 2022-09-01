@@ -1,10 +1,18 @@
-import Link from 'next/link'
+import { useState } from 'react'
 import { IoLogIn } from 'react-icons/io5'
+import FormWrapper from '../FormWrapper/FormWrapper'
+import LoginForm from '../LoginForm/LoginForm'
+import RegisterForm from '../RegisterForm/RegisterForm'
 
 const Login = () => {
+	const [showForm, setShowForm] = useState(false)
+	const [type, setType] = useState<'login' | 'register'>('login')
 	return (
-		<Link href="/login">
-			<a sx={{ display: 'flex', alignItems: 'center', mx: 2 }}>
+		<>
+			<div
+				sx={{ display: 'flex', alignItems: 'center', mx: 2, cursor: 'pointer' }}
+				onClick={() => setShowForm(true)}
+			>
 				<IoLogIn />
 				<span
 					sx={{
@@ -14,8 +22,13 @@ const Login = () => {
 				>
 					Login
 				</span>
-			</a>
-		</Link>
+			</div>
+			{showForm && (
+				<FormWrapper type={type} setType={setType}>
+					{type === 'login' ? <LoginForm /> : <RegisterForm />}
+				</FormWrapper>
+			)}
+		</>
 	)
 }
 export default Login

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
-import { getFilms } from '../../../../services/films.service'
+import { filmService } from '../../../../services/film.service'
 import {
 	ISearchListProps,
 	ISearchListWrapperProps,
@@ -30,7 +30,7 @@ const SearchList = (props: ISearchListProps) => {
 	const { value, setIsLoading } = props
 	const { isLoading, isSuccess, isError, error, data } = useQuery(
 		['SEARCH_FILMS', value],
-		() => getFilms(value),
+		() => filmService.getAll({ title: value }),
 	)
 
 	useEffect(() => {
