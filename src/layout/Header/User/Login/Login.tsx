@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { IoLogIn } from 'react-icons/io5'
+import { useAppDispatch } from '../../../../hooks/useAppDispatch'
+import { UserSlice } from '../../../../store/reducers/user/user.slice'
 import FormWrapper from '../FormWrapper/FormWrapper'
 import LoginForm from '../LoginForm/LoginForm'
 import RegisterForm from '../RegisterForm/RegisterForm'
@@ -7,6 +9,8 @@ import RegisterForm from '../RegisterForm/RegisterForm'
 const Login = () => {
 	const [showForm, setShowForm] = useState(false)
 	const [type, setType] = useState<'login' | 'register'>('login')
+	const wrapperRef = useRef<HTMLDivElement>(null)
+	const dispatch = useAppDispatch()
 	return (
 		<>
 			<div
@@ -24,7 +28,17 @@ const Login = () => {
 				</span>
 			</div>
 			{showForm && (
-				<FormWrapper type={type} setType={setType}>
+				<FormWrapper
+					type={type}
+					setType={setType}
+					ref={wrapperRef}
+					onClick={e => {
+						if (wrapperRef.current === e.target) {
+							setShowForm(false)
+							dispatch(UserSlice.actions.resetError())
+						}
+					}}
+				>
 					{type === 'login' ? <LoginForm /> : <RegisterForm />}
 				</FormWrapper>
 			)}

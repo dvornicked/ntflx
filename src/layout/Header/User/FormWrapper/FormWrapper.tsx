@@ -1,7 +1,14 @@
+import { ForwardedRef, forwardRef } from 'react'
+import { useAppSelector } from '../../../../hooks/useAppSelector'
 import { IFormWrapperProps } from './FormWrapper.interface'
 
-const FormWrapper = (props: IFormWrapperProps) => {
+const FormWrapper = forwardRef(function FormWrapper(
+	props: IFormWrapperProps,
+	ref: ForwardedRef<HTMLDivElement>,
+) {
 	const { children, type, setType, ...rest } = props
+	const error = useAppSelector(state => state.user.error)
+
 	const content = {
 		heading: type === 'login' ? 'Log In' : 'Sign Up',
 		subheading:
@@ -15,6 +22,7 @@ const FormWrapper = (props: IFormWrapperProps) => {
 					: 'Already have an account?',
 		},
 	}
+
 	return (
 		<div
 			sx={{
@@ -26,6 +34,7 @@ const FormWrapper = (props: IFormWrapperProps) => {
 				bottom: 0,
 				backgroundColor: 'rgba(0,0,0,0.5)',
 			}}
+			ref={ref}
 			{...rest}
 		>
 			<div
@@ -48,6 +57,20 @@ const FormWrapper = (props: IFormWrapperProps) => {
 					<span>{content.subheading}</span>
 				</div>
 				{children}
+				{error && (
+					<div
+						sx={{
+							textAlign: 'center',
+							my: 2,
+							p: 2,
+							border: '1px solid #eb4d4b',
+							backgroundColor: 'rgba(255, 121, 121, 0.3)',
+							borderRadius: '5px',
+						}}
+					>
+						{error}
+					</div>
+				)}
 				<div
 					sx={{
 						mt: 1,
@@ -66,5 +89,5 @@ const FormWrapper = (props: IFormWrapperProps) => {
 			</div>
 		</div>
 	)
-}
+})
 export default FormWrapper

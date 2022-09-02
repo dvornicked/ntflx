@@ -12,6 +12,7 @@ const Button = (props: IButtonProps) => {
 				width: '100%',
 				cursor: 'pointer',
 				fontSize: 2,
+				lineHeight: 1.2,
 				p: 2,
 				transition: 'background-color 0.3s ease',
 				'&:hover': {
