@@ -39,6 +39,17 @@ export const UserSlice = createSlice({
 				state.isLoading = false
 				state.error = action.payload?.message || 'Something went wrong'
 			})
+			.addCase(userActions.register.pending, state => {
+				state.isLoading = true
+			})
+			.addCase(userActions.register.fulfilled, (state, action) => {
+				state.isLoading = false
+				state.user = action.payload
+			})
+			.addCase(userActions.register.rejected, (state, action) => {
+				state.isLoading = false
+				state.error = action.payload?.message || 'Something went wrong'
+			})
 	},
 })
 

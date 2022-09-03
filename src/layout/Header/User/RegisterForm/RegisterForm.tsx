@@ -1,7 +1,11 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { Spinner } from 'theme-ui'
 import Input from '../../../../components/shared/Input/Input'
 import Button from '../../../../components/UI/Button/Button'
+import { useAppDispatch } from '../../../../hooks/useAppDispatch'
+import { useAppSelector } from '../../../../hooks/useAppSelector'
 import { IRegister } from '../../../../shared/types/register.interface'
+import { userActions } from '../../../../store/reducers/user/user.actions'
 
 const RegisterForm = () => {
 	const {
@@ -11,9 +15,12 @@ const RegisterForm = () => {
 	} = useForm<IRegister>({
 		mode: 'onChange',
 	})
+	const dispatch = useAppDispatch()
+	const isLoading = useAppSelector(state => state.user.isLoading)
 	const onSubmit: SubmitHandler<IRegister> = (data: IRegister) => {
-		console.log(data)
+		dispatch(userActions.register(data))
 	}
+
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
@@ -60,7 +67,9 @@ const RegisterForm = () => {
 				}}
 				error={errors.password}
 			/>
-			<Button type="submit">Sign Up</Button>
+			<Button type="submit">
+				{isLoading ? <Spinner size={16} color="text" /> : 'Sign Up'}
+			</Button>
 		</form>
 	)
 }
