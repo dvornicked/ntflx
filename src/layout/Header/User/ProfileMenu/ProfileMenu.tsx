@@ -9,7 +9,6 @@ import { UserSlice } from '../../../../store/reducers/user/user.slice'
 import { IProfileMenuOption, IProfileMenuProps } from './ProfileMenu.interface'
 
 const ProfileMenu = (props: IProfileMenuProps) => {
-	const { asPath } = useRouter()
 	const { user } = props
 	const [isOpen, toggleIsOpen] = useToggle()
 	const menuRef = useRef<HTMLDivElement>(null)
@@ -23,10 +22,6 @@ const ProfileMenu = (props: IProfileMenuProps) => {
 		},
 		[toggleIsOpen],
 	)
-
-	useEffect(() => {
-		toggleIsOpen()
-	}, [asPath, toggleIsOpen])
 
 	useEffect(() => {
 		if (isOpen) document.addEventListener('click', handleOutsideClick)
