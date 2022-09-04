@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { IUser, IUserTokens } from '../shared/types/user.interface'
+import { ITokens, IUser, IUserTokens } from '../shared/types/user.interface'
 
 const saveUserToLocalStorage = (user: IUser) => {
 	localStorage.setItem('user', JSON.stringify(user))
@@ -8,7 +8,7 @@ const saveUserToLocalStorage = (user: IUser) => {
 const removeUserFromLocalStorage = () => {
 	localStorage.removeItem('user')
 }
-const saveTokensToCookies = (tokens: IUserTokens) => {
+const saveTokensToCookies = (tokens: ITokens) => {
 	Cookies.set('accessToken', tokens.accessToken)
 	Cookies.set('refreshToken', tokens.refreshToken)
 }
