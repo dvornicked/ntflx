@@ -31,7 +31,7 @@ const Search = (props: ISearchProps) => {
 		>
 			<IoSearch
 				sx={{
-					width: 34,
+					minWidth: 34,
 					height: '100%',
 					borderLeft: '2px solid',
 					borderImage:

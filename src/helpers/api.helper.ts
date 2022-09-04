@@ -6,6 +6,7 @@ export const API = {
 	password: `${API_URL}/password`,
 	register: `${API_URL}/register`,
 	login: `${API_URL}/login`,
+	token: `${API_URL}/token`,
 	films: `${API_URL}/films`,
 	actors: `${API_URL}/actors`,
 	genres: `${API_URL}/genres`,
