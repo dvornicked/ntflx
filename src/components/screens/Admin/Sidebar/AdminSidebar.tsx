@@ -1,9 +1,8 @@
-import { useRouter } from 'next/router'
 import Sidebar from '../../../UI/Sidebar/Sidebar'
 import { IAdminSidebarProps } from './AdminSidebar.interface'
 
 const AdminSidebar = (props: IAdminSidebarProps) => {
-	const { children } = props
+	const { children, ...rest } = props
 	return (
 		<Sidebar
 			sidebar={[
@@ -12,6 +11,7 @@ const AdminSidebar = (props: IAdminSidebarProps) => {
 				{ label: 'Films', link: '/admin/films' },
 				{ label: 'Actors', link: '/admin/actors' },
 			]}
+			{...rest}
 		>
 			{children}
 		</Sidebar>

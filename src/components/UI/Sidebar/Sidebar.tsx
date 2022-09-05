@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { ISidebarProps } from './Sidebar.interface'
 
 const Sidebar = (props: ISidebarProps) => {
-	const { children, sidebar } = props
+	const { children, sidebar, ...rest } = props
 	const { asPath } = useRouter()
 	return (
 		<div
@@ -11,6 +11,7 @@ const Sidebar = (props: ISidebarProps) => {
 				display: 'grid',
 				gridTemplateColumns: '1fr 4fr',
 			}}
+			{...rest}
 		>
 			<aside
 				sx={{

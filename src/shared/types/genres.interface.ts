@@ -5,6 +5,6 @@ export interface IGenre {
 }
 
 export interface IGenres {
-	actors: IGenre[]
+	genres: IGenre[]
 	count: number
 }
