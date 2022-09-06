@@ -1,7 +1,8 @@
-import { IInputProps } from './Input.interface'
+import { ITextareaProps } from './Textarea.interface'
 
-const Input = <T,>(props: IInputProps<T>) => {
+const Textarea = <T,>(props: ITextareaProps<T>) => {
 	const { name, register, rules, error, ...rest } = props
+
 	return (
 		<div
 			sx={{
@@ -11,6 +12,7 @@ const Input = <T,>(props: IInputProps<T>) => {
 		>
 			<label
 				sx={{
+					mb: 1,
 					'&:first-letter': {
 						textTransform: 'capitalize',
 					},
@@ -19,26 +21,24 @@ const Input = <T,>(props: IInputProps<T>) => {
 			>
 				{name}
 			</label>
-			<input
+			<textarea
 				sx={{
 					color: 'text',
 					backgroundColor: 'transparent',
-					border: 'none',
-					borderBottom: '1px solid',
-					borderImage:
-						'linear-gradient(to right, transparent 5%, rgba(80,80,80,.5) 50%, transparent 95%) 1',
+					resize: 'vertical',
+					borderColor: '#444',
 					borderRadius: '5px',
-					fontSize: 3,
-					p: 1,
+					p: 2,
+					fontSize: 2,
+					fontFamily: 'default',
 				}}
-				type={name}
 				{...register(name, rules)}
 				{...rest}
-			/>
+			></textarea>
 			{error && (
 				<span sx={{ color: '#eb4d4b', lineHeight: 1.4 }}>{error.message}</span>
 			)}
 		</div>
 	)
 }
-export default Input
+export default Textarea

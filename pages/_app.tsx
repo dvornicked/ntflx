@@ -8,7 +8,7 @@ import { store } from '../src/store/store'
 import AuthProvider from '../src/providers/AuthProvider/AuthProvider'
 import { TypeComponentAuth } from '../src/providers/AuthProvider/AuthProvider.interface'
 
-const queryClient = new QueryClient()
+export const queryClient = new QueryClient()
 type AppAuthProps = AppProps & TypeComponentAuth
 
 function MyApp({ Component, pageProps }: AppAuthProps) {
