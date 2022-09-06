@@ -1,4 +1,5 @@
 import AdminSidebar from '../../src/components/screens/Admin/Sidebar/AdminSidebar'
+import { UserRole } from '../../src/shared/types/user.interface'
 
 const Films = () => {
 	return (
@@ -7,4 +8,5 @@ const Films = () => {
 		</AdminSidebar>
 	)
 }
+Films.access = UserRole.ADMIN
 export default Films

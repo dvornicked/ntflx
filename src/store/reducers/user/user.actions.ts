@@ -19,6 +19,7 @@ const login = createAsyncThunk<IUser, ILogin, { rejectValue: IResponseError }>(
 			const { data } = await axios.post<IUserTokens>(API.login, credentials)
 			userHelper.saveUserToLocalStorage(data.user)
 			userHelper.saveTokensToCookies(data)
+			console.log(data.user)
 			return data.user
 		} catch (e) {
 			const error = e as AxiosError<IResponseError>
@@ -39,7 +40,6 @@ const register = createAsyncThunk<
 		userHelper.saveTokensToCookies(data)
 		return data.user
 	} catch (e) {
-		console.log(e)
 		const error = e as AxiosError<IResponseError>
 		if (!error.response) throw error
 		return thunkApi.rejectWithValue(error.response.data)

@@ -6,6 +6,7 @@ import { Spinner } from 'theme-ui'
 import AdminSidebar from '../../../src/components/screens/Admin/Sidebar/AdminSidebar'
 import ErrorMessage from '../../../src/components/shared/ErrorMessage/ErrorMessage'
 import { genreService } from '../../../src/services/genre.service'
+import { UserRole } from '../../../src/shared/types/user.interface'
 import { queryClient } from '../../_app'
 
 const Genres = () => {
@@ -139,4 +140,5 @@ const Genres = () => {
 		</AdminSidebar>
 	)
 }
+Genres.access = UserRole.ADMIN
 export default Genres

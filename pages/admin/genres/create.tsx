@@ -1,8 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Spinner } from 'theme-ui'
 import AdminSidebar from '../../../src/components/screens/Admin/Sidebar/AdminSidebar'
 import ErrorMessage from '../../../src/components/shared/ErrorMessage/ErrorMessage'
 import Input from '../../../src/components/shared/Input/Input'
@@ -10,8 +9,9 @@ import Textarea from '../../../src/components/shared/Textarea/Textarea'
 import Button from '../../../src/components/UI/Button/Button'
 import { genreService } from '../../../src/services/genre.service'
 import { IGenre } from '../../../src/shared/types/genres.interface'
+import { UserRole } from '../../../src/shared/types/user.interface'
 
-const EditGenre = () => {
+const CreateGenre = () => {
 	const router = useRouter()
 	const [name, setName] = useState('')
 	const [desc, setDesc] = useState('')
@@ -94,4 +94,5 @@ const EditGenre = () => {
 		</div>
 	)
 }
-export default EditGenre
+CreateGenre.access = UserRole.ADMIN
+export default CreateGenre

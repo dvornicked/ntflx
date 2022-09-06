@@ -10,6 +10,7 @@ import Textarea from '../../../../src/components/shared/Textarea/Textarea'
 import Button from '../../../../src/components/UI/Button/Button'
 import { genreService } from '../../../../src/services/genre.service'
 import { IGenre } from '../../../../src/shared/types/genres.interface'
+import { UserRole } from '../../../../src/shared/types/user.interface'
 
 const EditGenre = () => {
 	const router = useRouter()
@@ -121,4 +122,5 @@ const EditGenre = () => {
 		</div>
 	)
 }
+EditGenre.access = UserRole.ADMIN
 export default EditGenre
