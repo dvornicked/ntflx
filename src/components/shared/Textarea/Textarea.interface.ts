@@ -7,7 +7,7 @@ import {
 } from 'react-hook-form'
 
 export interface ITextareaProps<T> extends HTMLAttributes<HTMLTextAreaElement> {
-	value: string
+	value?: string
 	register: UseFormRegister<T>
 	name: Path<T>
 	rules?: RegisterOptions

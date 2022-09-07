@@ -2,11 +2,11 @@ import { useAppSelector } from '../../src/hooks/useAppSelector'
 import { NextPageAuth } from '../../src/providers/AuthProvider/AuthProvider.interface'
 import { UserRole } from '../../src/shared/types/user.interface'
 import Image from 'next/image'
-import { Button, Spinner } from 'theme-ui'
-import Link from 'next/link'
+import { Spinner } from 'theme-ui'
 import { useQuery } from '@tanstack/react-query'
 import { userService } from '../../src/services/user.service'
 import ErrorMessage from '../../src/components/shared/ErrorMessage/ErrorMessage'
+import ProfileSidebar from '../../src/components/screens/Profile/Sidebar/ProfileSidebar'
 
 const Profile: NextPageAuth = () => {
 	const { user } = useAppSelector(state => state.user)
@@ -19,98 +19,87 @@ const Profile: NextPageAuth = () => {
 		['GET_FAVORITED_FILMS'],
 		async () => await userService.getFavFilms(),
 	)
+
 	if (!user) return null
 
 	return (
-		<div
-			sx={{
-				display: 'grid',
-				gridTemplateColumns: '300px 1fr',
-				gridTemplateRows: '300px 200px 200px',
-				gridGap: 4,
-				height: '300px',
-				mt: 3,
-				mx: 'auto',
-			}}
-		>
-			<div>
-				<Image
-					sx={{
-						borderRadius: '5px',
-					}}
-					src={user.image}
-					width="300px"
-					height="300px"
-					alt="Avatar"
-				/>
-			</div>
+		<ProfileSidebar>
 			<div
 				sx={{
 					display: 'grid',
-					div: {
-						fontSize: 18,
-					},
+					gridTemplateColumns: '300px 1fr',
+					gridTemplateRows: '300px 200px 200px',
+					gridGap: 4,
+					height: '300px',
+					mx: 4,
 				}}
 			>
-				<h1>Profile</h1>
-				<div>Username: {user.username}</div>
-				<div>Email: {user.email}</div>
-				<div>Role: {user.role}</div>
-				<div>About me: {user.desc}</div>
-
+				<div>
+					<Image
+						sx={{
+							borderRadius: '5px',
+						}}
+						src={user.image}
+						width="300px"
+						height="300px"
+						alt="Avatar"
+					/>
+				</div>
 				<div
 					sx={{
-						alignSelf: 'end',
+						display: 'grid',
+						div: {
+							fontSize: 18,
+						},
 					}}
 				>
-					<Link href="/profile/edit">
-						<a>
-							<Button
-								sx={{
-									width: '100%',
-									cursor: 'pointer',
-								}}
-							>
-								Edit profile
-							</Button>
-						</a>
-					</Link>
-				</div>
-			</div>
-			<div
-				sx={{
-					gridColumn: '1/-1',
-				}}
-			>
-				<h2>Favorite films</h2>
-				{isFavFilmsLoading && (
-					<Spinner
+					<h1
 						sx={{
-							m: 'auto',
-						}}
-						color="white"
-					/>
-				)}
-				{isFavFilmsError && (
-					<ErrorMessage
-						error={
-							favFilmsError instanceof Error ? favFilmsError.message : 'Error'
-						}
-					/>
-				)}
-				{favFilms?.data.count ? (
-					favFilms?.data.films.map(film => <p key={film.id}>{film.image}</p>)
-				) : (
-					<div
-						sx={{
-							fontSize: 2,
+							mb: 1,
 						}}
 					>
-						Favorite films not found
-					</div>
-				)}
+						Profile
+					</h1>
+					<div>Username: {user.username}</div>
+					<div>Email: {user.email}</div>
+					<div>Role: {user.role}</div>
+					<div>About me: {user.desc}</div>
+				</div>
+				<div
+					sx={{
+						gridColumn: '1/-1',
+					}}
+				>
+					<h2>Favorite films</h2>
+					{isFavFilmsLoading && (
+						<Spinner
+							sx={{
+								m: 'auto',
+							}}
+							color="white"
+						/>
+					)}
+					{isFavFilmsError && (
+						<ErrorMessage
+							error={
+								favFilmsError instanceof Error ? favFilmsError.message : 'Error'
+							}
+						/>
+					)}
+					{favFilms?.data.count ? (
+						favFilms?.data.films.map(film => <p key={film.id}>{film.image}</p>)
+					) : (
+						<div
+							sx={{
+								fontSize: 2,
+							}}
+						>
+							Favorite films not found
+						</div>
+					)}
+				</div>
 			</div>
-		</div>
+		</ProfileSidebar>
 	)
 }
 

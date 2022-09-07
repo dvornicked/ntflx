@@ -1,4 +1,6 @@
-export interface ISidebarProps {
+import { HTMLAttributes } from 'react'
+
+export interface ISidebarProps extends HTMLAttributes<HTMLDivElement> {
 	children: React.ReactNode
 	sidebar: ISidebarData[]
 }
