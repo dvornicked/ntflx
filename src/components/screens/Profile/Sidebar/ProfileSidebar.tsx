@@ -17,6 +17,10 @@ const ProfileSidebar = (props: IProfileSidebarProps) => {
 					label: 'Edit profile',
 					link: '/profile/edit',
 				},
+				{
+					label: 'Change avatar',
+					link: '/profile/avatar',
+				},
 			]}
 			{...rest}
 		>

@@ -17,6 +17,12 @@ export const UserSlice = createSlice({
 		setUser: (state, action: PayloadAction<IUser>) => {
 			state.user = action.payload
 		},
+		updateAvatar: (state, action: PayloadAction<string>) => {
+			if (state.user) {
+				state.user.image = action.payload
+				userHelper.saveUserToLocalStorage(state.user)
+			}
+		},
 		resetError: state => {
 			state.error = ''
 		},

@@ -10,6 +10,7 @@ import { IUser, UserRole } from '../../src/shared/types/user.interface'
 import ErrorMessage from '../../src/components/shared/ErrorMessage/ErrorMessage'
 import { useAppDispatch } from '../../src/hooks/useAppDispatch'
 import { userActions } from '../../src/store/reducers/user/user.actions'
+import { useQuery } from '@tanstack/react-query'
 
 export type EditProfileType = Pick<IUser, 'username' | 'desc'>
 
