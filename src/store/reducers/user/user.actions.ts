@@ -21,7 +21,9 @@ const update = createAsyncThunk<
 	{ rejectValue: IResponseError }
 >('user/update', async (data, thunkApi) => {
 	try {
+		console.log(data)
 		const response = await userService.updateProfile(data)
+		console.log(response.data)
 		userHelper.saveUserToLocalStorage(response.data)
 		return response.data
 	} catch (e) {

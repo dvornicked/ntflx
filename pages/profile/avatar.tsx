@@ -6,11 +6,18 @@ import Button from '../../src/components/UI/Button/Button'
 import { useState } from 'react'
 import { useAppDispatch } from '../../src/hooks/useAppDispatch'
 import { UserSlice } from '../../src/store/reducers/user/user.slice'
+import { useRouter } from 'next/router'
+import { useMutation } from '@tanstack/react-query'
+import { userService } from '../../src/services/user.service'
 
 const Avatar = () => {
 	const { user } = useAppSelector(state => state.user)
 	const [imageUrl, setImageUrl] = useState<string | null>(null)
+	const mutation = useMutation(['uploadAvatar'], async (imageUrl: string) => {
+		await userService.updateAvatar(imageUrl)
+	})
 	const dispatch = useAppDispatch()
+	const router = useRouter()
 	if (!user) return null
 	return (
 		<ProfileSidebar>
@@ -45,7 +52,9 @@ const Avatar = () => {
 					}}
 					onClick={() => {
 						if (imageUrl) {
+							mutation.mutate(imageUrl)
 							dispatch(UserSlice.actions.updateAvatar(imageUrl))
+							router.push('/profile')
 						}
 					}}
 				>

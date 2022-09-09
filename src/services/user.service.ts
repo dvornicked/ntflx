@@ -2,10 +2,9 @@ import axios from 'axios'
 import { EditProfileType } from '../../pages/profile/edit'
 import { API } from '../helpers/api.helper'
 import { AxiosAuth } from '../helpers/axios.interceptor.helper'
-import { useAppSelector } from '../hooks/useAppSelector'
 import { IFilms } from '../shared/types/films.interface'
 import { IGenres } from '../shared/types/genres.interface'
-import { IUser, IUserTokens } from '../shared/types/user.interface'
+import { IUser } from '../shared/types/user.interface'
 
 const getOne = async (id: string) => {
 	const { data } = await axios.get(`${API.profile}/${id}`)
@@ -24,8 +23,14 @@ const updateProfile = async (data: EditProfileType) => {
 	return AxiosAuth.put<IUser>(`${API.profile}`, data)
 }
 
+const updateAvatar = async (image: string) => {
+	return AxiosAuth.put<IUser>(`${API.profile}`, { image })
+}
+
 export const userService = {
+	getOne,
 	getFavFilms,
 	getFavGenres,
 	updateProfile,
+	updateAvatar,
 }
