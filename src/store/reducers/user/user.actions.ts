@@ -3,7 +3,6 @@ import axios, { AxiosError } from 'axios'
 import { EditProfileType } from '../../../../pages/profile/edit'
 import { API } from '../../../helpers/api.helper'
 import { userHelper } from '../../../helpers/user.helper'
-import { uploadService } from '../../../services/upload.service'
 import { userService } from '../../../services/user.service'
 import { ILogin } from '../../../shared/types/login.interface'
 import { IRegister } from '../../../shared/types/register.interface'
@@ -21,9 +20,7 @@ const update = createAsyncThunk<
 	{ rejectValue: IResponseError }
 >('user/update', async (data, thunkApi) => {
 	try {
-		console.log(data)
 		const response = await userService.updateProfile(data)
-		console.log(response.data)
 		userHelper.saveUserToLocalStorage(response.data)
 		return response.data
 	} catch (e) {

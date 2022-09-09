@@ -27,10 +27,20 @@ const updateAvatar = async (image: string) => {
 	return AxiosAuth.put<IUser>(`${API.profile}`, { image })
 }
 
+const updateEmail = async (email: string) => {
+	return AxiosAuth.put<IUser>(`${API.profile}`, { email })
+}
+
+const updatePassword = async (password: string) => {
+	return AxiosAuth.put<IUser>(`${API.password}`, { password })
+}
+
 export const userService = {
 	getOne,
 	getFavFilms,
 	getFavGenres,
 	updateProfile,
 	updateAvatar,
+	updateEmail,
+	updatePassword,
 }

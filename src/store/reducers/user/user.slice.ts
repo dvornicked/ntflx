@@ -23,6 +23,12 @@ export const UserSlice = createSlice({
 				userHelper.saveUserToLocalStorage(state.user)
 			}
 		},
+		updateEmail: (state, action: PayloadAction<string>) => {
+			if (state.user) {
+				state.user.email = action.payload
+				userHelper.saveUserToLocalStorage(state.user)
+			}
+		},
 		resetError: state => {
 			state.error = ''
 		},

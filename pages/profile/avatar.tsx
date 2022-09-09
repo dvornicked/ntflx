@@ -9,6 +9,7 @@ import { UserSlice } from '../../src/store/reducers/user/user.slice'
 import { useRouter } from 'next/router'
 import { useMutation } from '@tanstack/react-query'
 import { userService } from '../../src/services/user.service'
+import { UserRole } from '../../src/shared/types/user.interface'
 
 const Avatar = () => {
 	const { user } = useAppSelector(state => state.user)
@@ -64,4 +65,5 @@ const Avatar = () => {
 		</ProfileSidebar>
 	)
 }
+Avatar.access = UserRole.USER
 export default Avatar
