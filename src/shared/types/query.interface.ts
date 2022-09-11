@@ -11,3 +11,7 @@ export interface IFilmQuery extends IBaseQuery {
 export interface IGenreQuery extends IBaseQuery {
 	name?: string
 }
+
+export interface IUserQuery extends IBaseQuery {
+	username?: string
+}
