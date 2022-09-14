@@ -5,10 +5,16 @@ import { AxiosAuth } from '../helpers/axios.interceptor.helper'
 import { IFilms } from '../shared/types/films.interface'
 import { IGenres } from '../shared/types/genres.interface'
 import { IUserQuery } from '../shared/types/query.interface'
-import { IUser, IUsers } from '../shared/types/user.interface'
+import { IRegister } from '../shared/types/register.interface'
+import { IUser, IUsers, IUserTokens } from '../shared/types/user.interface'
 
 const getOne = async (id: number) => {
 	const { data } = await axios.get<IUser>(`${API.profile}/${id}`)
+	return data
+}
+
+const register = async (credentials: IRegister) => {
+	const { data } = await axios.post<IUserTokens>(API.register, credentials)
 	return data
 }
 
@@ -60,4 +66,5 @@ export const userService = {
 	updatePassword,
 	getAll,
 	remove,
+	register,
 }
