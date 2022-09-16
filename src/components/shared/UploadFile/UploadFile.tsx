@@ -27,7 +27,9 @@ const UploadFile = (props: IUploadFileProps) => {
 	}, [inputRef])
 	return (
 		<div sx={styles}>
-			<Button onClick={handleButtonClick}>Choose file</Button>
+			<Button type="button" onClick={handleButtonClick}>
+				Choose file
+			</Button>
 			<input
 				sx={{
 					display: 'none',

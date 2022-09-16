@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { IoAdd, IoClose, IoCreate } from 'react-icons/io5'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { Link, Spinner } from 'theme-ui'
+import { Spinner } from 'theme-ui'
 import AdminSidebar from '../../../src/components/screens/Admin/Sidebar/AdminSidebar'
 import ErrorMessage from '../../../src/components/shared/ErrorMessage/ErrorMessage'
 import { userService } from '../../../src/services/user.service'
 import { UserRole } from '../../../src/shared/types/user.interface'
 import { queryClient } from '../../_app'
+import Link from 'next/link'
 
 const Users = () => {
 	const { data, isLoading, isError, error } = useQuery(['GET_USERS'], () =>

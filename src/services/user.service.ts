@@ -34,16 +34,32 @@ const updateProfile = async (data: EditProfileType) => {
 	return AxiosAuth.put<IUser>(`${API.profile}`, data)
 }
 
+const updateProfileById = async (id: number, data: EditProfileType) => {
+	return AxiosAuth.put<IUser>(`${API.profile}/${id}`, data)
+}
+
 const updateAvatar = async (image: string) => {
 	return AxiosAuth.put<IUser>(`${API.profile}`, { image })
+}
+
+const updateAvatarById = async (id: number, image: string) => {
+	return AxiosAuth.put<IUser>(`${API.profile}/${id}`, { image })
 }
 
 const updateEmail = async (email: string) => {
 	return AxiosAuth.put<IUser>(`${API.profile}`, { email })
 }
 
+const updateEmailById = async (id: number, email: string) => {
+	return AxiosAuth.put<IUser>(`${API.profile}/${id}`, { email })
+}
+
 const updatePassword = async (password: string) => {
 	return AxiosAuth.put<IUser>(`${API.password}`, { password })
+}
+
+const updatePasswordById = async (id: number, password: string) => {
+	return AxiosAuth.put<IUser>(`${API.password}/${id}`, { password })
 }
 
 const getAll = async (query: IUserQuery) => {
@@ -52,7 +68,11 @@ const getAll = async (query: IUserQuery) => {
 }
 
 const remove = async (id: number) => {
-	return AxiosAuth.delete(`${API.profile}/${id}`)
+	return await AxiosAuth.delete(`${API.profile}/${id}`)
+}
+
+const updateRole = async (id: number, role: string) => {
+	return await AxiosAuth.put<IUser>(`${API.role}/${id}`, { role })
 }
 
 export const userService = {
@@ -67,4 +87,9 @@ export const userService = {
 	getAll,
 	remove,
 	register,
+	updateRole,
+	updateAvatarById,
+	updateProfileById,
+	updatePasswordById,
+	updateEmailById,
 }

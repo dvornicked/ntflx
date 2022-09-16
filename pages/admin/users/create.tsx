@@ -9,6 +9,7 @@ import Input from '../../../src/components/shared/Input/Input'
 import Button from '../../../src/components/UI/Button/Button'
 import { userService } from '../../../src/services/user.service'
 import { IRegister } from '../../../src/shared/types/register.interface'
+import { UserRole } from '../../../src/shared/types/user.interface'
 
 const Create = () => {
 	const [error, setError] = useState('')
@@ -37,6 +38,7 @@ const Create = () => {
 			},
 		},
 	)
+
 	return (
 		<AdminSidebar>
 			<div

@@ -24,6 +24,7 @@
 		"react-icons": "^4.4.0",
 		"react-query": "^3.39.2",
 		"react-redux": "^8.0.2",
+		"react-select": "^5.4.0",
 		"theme-ui": "^0.14.7"
 	},
 	"devDependencies": {

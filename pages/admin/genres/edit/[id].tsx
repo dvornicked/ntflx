@@ -23,11 +23,11 @@ const EditGenre = () => {
 	const [name, setName] = useState('')
 	const [desc, setDesc] = useState('')
 	const mutation = useMutation(
-		['CREACTE_GENRE'],
+		['EDIT_GENRE'],
 		(data: Omit<IGenre, 'id'>) => genreService.updateGenre(id, data),
 		{
 			onSuccess: () => {
-				router.push('/admin/genres')
+				router.push('/admin/users')
 			},
 			onError: error => {
 				error instanceof Error
