@@ -100,4 +100,6 @@ const Create = () => {
 		</AdminSidebar>
 	)
 }
+
+Create.access = UserRole.ADMIN
 export default Create

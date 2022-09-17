@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 import { uploadService } from '../../../services/upload.service'
 import Button from '../../UI/Button/Button'
 import { IUploadFileProps } from './UploadFile.interface'
+import ErrorMessage from '../ErrorMessage/ErrorMessage'
 
 const UploadFile = (props: IUploadFileProps) => {
 	const { accept, setImageUrl, styles, ...rest } = props
