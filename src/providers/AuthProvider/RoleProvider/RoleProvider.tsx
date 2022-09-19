@@ -8,8 +8,6 @@ const RoleProvider = (props: TypeComponentAuth) => {
 		Component: { access },
 	} = props
 	const { user } = useAppSelector(state => state.user)
-	console.log('user', user)
-	console.log(access)
 
 	if (!access) return <>{children}</>
 	if (user?.role === access || user?.role === UserRole.ADMIN)

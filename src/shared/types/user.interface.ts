@@ -4,14 +4,19 @@ export enum UserRole {
 }
 
 export interface IUser {
-	id: string
+	id: number
 	username: string
 	email: string
 	image: string
 	desc: string
 	role: UserRole
-	createdAt: Date
-	updatedAt: Date
+	createdAt: string
+	updatedAt: string
+}
+
+export interface IUsers {
+	users: IUser[]
+	count: number
 }
 
 export interface ITokens {

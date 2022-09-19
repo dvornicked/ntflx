@@ -87,26 +87,27 @@ const ProfileMenu = (props: IProfileMenuProps) => {
 					}}
 				>
 					{options.map(option => (
-						<div
-							sx={{
-								textAlign: 'center',
-								cursor: 'pointer',
-								fontSize: 2,
-								border: '1px solid',
-								borderImage:
-									'linear-gradient(to right, transparent 5%, rgba(80,80,80,.5) 50%, transparent 95%) 1',
-								p: 2,
-								'&:hover': {
-									backgroundColor: '#282828',
-								},
-							}}
-							key={option.href}
-							onClick={option.onClick}
-						>
-							<Link href={option.href}>
-								<a>{option.label}</a>
-							</Link>
-						</div>
+						<Link href={option.href} key={option.href}>
+							<a>
+								<div
+									sx={{
+										textAlign: 'center',
+										cursor: 'pointer',
+										fontSize: 2,
+										border: '1px solid',
+										borderImage:
+											'linear-gradient(to right, transparent 5%, rgba(80,80,80,.5) 50%, transparent 95%) 1',
+										p: 2,
+										'&:hover': {
+											backgroundColor: '#282828',
+										},
+									}}
+									onClick={option.onClick}
+								>
+									{option.label}
+								</div>
+							</a>
+						</Link>
 					))}
 				</div>
 			)}

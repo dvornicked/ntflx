@@ -7,3 +7,11 @@ export interface IBaseQuery {
 export interface IFilmQuery extends IBaseQuery {
 	title?: string
 }
+
+export interface IGenreQuery extends IBaseQuery {
+	name?: string
+}
+
+export interface IUserQuery extends IBaseQuery {
+	username?: string
+}

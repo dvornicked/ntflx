@@ -1,7 +1,9 @@
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios, { AxiosError } from 'axios'
+import { EditProfileType } from '../../../../pages/profile/edit'
 import { API } from '../../../helpers/api.helper'
 import { userHelper } from '../../../helpers/user.helper'
+import { userService } from '../../../services/user.service'
 import { ILogin } from '../../../shared/types/login.interface'
 import { IRegister } from '../../../shared/types/register.interface'
 import { IResponseError } from '../../../shared/types/response.interface'
@@ -11,6 +13,22 @@ import {
 	IUserTokens,
 } from '../../../shared/types/user.interface'
 import { UserSlice } from './user.slice'
+
+const update = createAsyncThunk<
+	IUser,
+	EditProfileType,
+	{ rejectValue: IResponseError }
+>('user/update', async (data, thunkApi) => {
+	try {
+		const response = await userService.updateProfile(data)
+		userHelper.saveUserToLocalStorage(response.data)
+		return response.data
+	} catch (e) {
+		const error = e as AxiosError<IResponseError>
+		if (!error.response) throw error
+		return thunkApi.rejectWithValue(error.response.data)
+	}
+})
 
 const login = createAsyncThunk<IUser, ILogin, { rejectValue: IResponseError }>(
 	'user/getUser',
@@ -39,7 +57,6 @@ const register = createAsyncThunk<
 		userHelper.saveTokensToCookies(data)
 		return data.user
 	} catch (e) {
-		console.log(e)
 		const error = e as AxiosError<IResponseError>
 		if (!error.response) throw error
 		return thunkApi.rejectWithValue(error.response.data)
@@ -77,4 +94,5 @@ export const userActions = {
 	login,
 	register,
 	getTokens,
+	update,
 }
