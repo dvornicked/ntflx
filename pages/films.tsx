@@ -55,7 +55,13 @@ const Films = () => {
 				/>
 				{searchTerm !== '' &&
 					(isLoading ? (
-						<Spinner size={24} color="white" />
+						<Spinner
+							size={34}
+							color="white"
+							sx={{
+								mx: 2,
+							}}
+						/>
 					) : (
 						<IoClose
 							sx={{
@@ -84,6 +90,8 @@ const Films = () => {
 								title={film.title}
 								image={film.image}
 								rating={film.rating}
+								duration={film.duration}
+								releaseDate={film.releaseDate}
 								ratingCount={film.ratingCount}
 							/>
 						</li>
