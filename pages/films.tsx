@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
+import { title } from 'process'
 import { useState } from 'react'
 import { IoClose } from 'react-icons/io5'
 import { Spinner } from 'theme-ui'
 import ErrorMessage from '../src/components/shared/ErrorMessage/ErrorMessage'
+import FilmCard from '../src/components/shared/FilmCard/FilmCard'
 import { useDebounce } from '../src/hooks/useDebounce'
 import { filmService } from '../src/services/film.service'
 
@@ -73,19 +75,18 @@ const Films = () => {
 						/>
 					))}
 			</div>
-			{isLoading && (
-				<Spinner
-					color="white"
-					sx={{
-						display: 'block',
-						m: 'auto',
-					}}
-				/>
-			)}
-			{data && (
+			{data && data.count > 0 && (
 				<ul>
 					{data?.films.map(film => (
-						<li key={film.id}>{film.title}</li>
+						<li key={film.id}>
+							<FilmCard
+								id={film.id}
+								title={film.title}
+								image={film.image}
+								rating={film.rating}
+								ratingCount={film.ratingCount}
+							/>
+						</li>
 					))}
 				</ul>
 			)}
