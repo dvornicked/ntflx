@@ -24,10 +24,13 @@ const Edit = () => {
 	const router = useRouter()
 	const { id: idString } = router.query
 	const id = Number(idString)
-	const { data, error, isLoading } = useQuery(['GET_FILM', id], async () => {
-		const { data } = await filmService.getOne(id)
-		return data
-	})
+	const { data, error, isLoading } = useQuery(
+		[`GET_FILM_${id}`, id],
+		async () => {
+			const { data } = await filmService.getOne(id)
+			return data
+		},
+	)
 	const [mutationError, setMutationError] = useState('')
 	const [title, setTitle] = useState('')
 	const [description, setDescription] = useState('')
