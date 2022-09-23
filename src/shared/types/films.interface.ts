@@ -18,8 +18,17 @@ export interface IFilm {
 	genres: IGenre[]
 }
 
+export interface IFilmsWithRate extends IFilm {
+	rate: number
+}
+
 export interface IFilms {
 	films: IFilm[]
+	count: number
+}
+
+export interface IRatedFilms {
+	films: IFilmsWithRate[]
 	count: number
 }
 export interface IFilmCreate

@@ -18,6 +18,7 @@ const FilmCard = (props: IFilmCardProps) => {
 			{...rest}
 			sx={{
 				display: 'inline-block',
+				position: 'relative',
 				transition: 'transform .2s ease-in-out',
 				':hover': {
 					transform: 'scale(1.05)',
@@ -59,6 +60,18 @@ const FilmCard = (props: IFilmCardProps) => {
 						<span>{new Date(releaseDate).getFullYear()} year</span>
 						<span>|</span>
 						<span>{duration} minutes</span>
+					</div>
+					<div
+						sx={{
+							position: 'absolute',
+							top: 0,
+							right: 0,
+							bg: 'primary',
+							p: 2,
+							borderRadius: '0 5px 0 5px',
+						}}
+					>
+						<span>{rating.toFixed(1)}</span>
 					</div>
 				</a>
 			</Link>

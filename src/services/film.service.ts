@@ -6,6 +6,7 @@ import {
 	IFilmCreate,
 	IFilms,
 	IFilmUpdate,
+	IRatedFilms,
 } from '../shared/types/films.interface'
 import { IFilmQuery } from '../shared/types/query.interface'
 
@@ -44,8 +45,13 @@ const remove = async (id: number) => {
 	return data
 }
 
-const rate = async (id: number, rating: number) => {
-	const { data } = await AxiosAuth.post(`${API.films}/rating/${id}`, { rating })
+const rate = async (id: number, value: number) => {
+	const { data } = await AxiosAuth.post(`${API.films}/rating/${id}`, { value })
+	return data
+}
+
+const rated = async () => {
+	const { data } = await AxiosAuth.get<IRatedFilms>(`${API.films}/rated`)
 	return data
 }
 
@@ -56,4 +62,5 @@ export const filmService = {
 	update,
 	remove,
 	rate,
+	rated,
 }
