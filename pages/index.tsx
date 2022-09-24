@@ -29,7 +29,16 @@ const Home = () => {
 			featuredFilms,
 		}
 	})
-	return (
+	return isLoading ? (
+		<Spinner
+			size={34}
+			color="white"
+			sx={{
+				mx: 'auto',
+				mt: 5,
+			}}
+		/>
+	) : (
 		<div
 			sx={{
 				m: 3,
@@ -37,93 +46,83 @@ const Home = () => {
 		>
 			<div>
 				<h2>New films</h2>
-				{isLoading ? (
-					<Spinner color="text" sx={{ m: 'auto' }} />
-				) : (
-					<ul
-						sx={{
-							display: 'grid',
-							gridTemplateColumns: 'repeat(auto-fill, 200px)',
-							justifyContent: 'space-between',
-							gap: '10px',
-						}}
-					>
-						{data?.newFilms?.map(film => (
-							<li key={film.id}>
-								<FilmCard
-									id={film.id}
-									views={film.views}
-									title={film.title}
-									image={film.image}
-									rating={film.rating}
-									duration={film.duration}
-									releaseDate={film.releaseDate}
-									ratingCount={film.ratingCount}
-								/>
-							</li>
-						))}
-					</ul>
-				)}
+				<ul
+					sx={{
+						display: 'grid',
+						gridTemplateColumns: 'repeat(auto-fill, 200px)',
+						justifyContent: 'space-between',
+						gap: '10px',
+					}}
+				>
+					{data?.newFilms?.map(film => (
+						<li key={film.id}>
+							<FilmCard
+								id={film.id}
+								views={film.views}
+								title={film.title}
+								image={film.image}
+								rating={film.rating}
+								duration={film.duration}
+								releaseDate={film.releaseDate}
+								ratingCount={film.ratingCount}
+							/>
+						</li>
+					))}
+				</ul>
 			</div>
 			<div>
 				<h2>Popular films</h2>
-				{isLoading ? (
-					<Spinner color="text" sx={{ m: 'auto' }} />
-				) : (
-					<ul
-						sx={{
-							display: 'grid',
-							gridTemplateColumns: 'repeat(auto-fill, 200px)',
-							justifyContent: 'space-between',
-							gap: '10px',
-						}}
-					>
-						{data?.popularFilms?.map(film => (
-							<li key={film.id}>
-								<FilmCard
-									id={film.id}
-									views={film.views}
-									title={film.title}
-									image={film.image}
-									rating={film.rating}
-									duration={film.duration}
-									releaseDate={film.releaseDate}
-									ratingCount={film.ratingCount}
-								/>
-							</li>
-						))}
-					</ul>
-				)}
+
+				<ul
+					sx={{
+						display: 'grid',
+						gridTemplateColumns: 'repeat(auto-fill, 200px)',
+						justifyContent: 'space-between',
+						gap: '10px',
+					}}
+				>
+					{data?.popularFilms?.map(film => (
+						<li key={film.id}>
+							<FilmCard
+								id={film.id}
+								views={film.views}
+								title={film.title}
+								image={film.image}
+								rating={film.rating}
+								duration={film.duration}
+								releaseDate={film.releaseDate}
+								ratingCount={film.ratingCount}
+							/>
+						</li>
+					))}
+				</ul>
 			</div>
 			<div>
 				<h2>Featured films</h2>
-				{isLoading ? (
-					<Spinner color="text" sx={{ m: 'auto' }} />
-				) : (
-					<ul
-						sx={{
-							display: 'grid',
-							gridTemplateColumns: 'repeat(auto-fill, 200px)',
-							justifyContent: 'space-between',
-							gap: '10px',
-						}}
-					>
-						{data?.featuredFilms?.map(film => (
-							<li key={film.id}>
-								<FilmCard
-									id={film.id}
-									views={film.views}
-									title={film.title}
-									image={film.image}
-									rating={film.rating}
-									duration={film.duration}
-									releaseDate={film.releaseDate}
-									ratingCount={film.ratingCount}
-								/>
-							</li>
-						))}
-					</ul>
-				)}
+
+				<ul
+					sx={{
+						display: 'grid',
+						gridTemplateColumns: 'repeat(auto-fill, 200px)',
+						justifyContent: 'space-between',
+						gap: '10px',
+					}}
+				>
+					{data?.featuredFilms?.map(film => (
+						<li key={film.id}>
+							<FilmCard
+								id={film.id}
+								views={film.views}
+								title={film.title}
+								image={film.image}
+								rating={film.rating}
+								duration={film.duration}
+								releaseDate={film.releaseDate}
+								ratingCount={film.ratingCount}
+							/>
+						</li>
+					))}
+				</ul>
 			</div>
 		</div>
 	)
