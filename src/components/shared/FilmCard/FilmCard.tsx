@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { IFilmCardProps } from './FilmCard.interface'
 import Image from 'next/image'
+import { IoEyeOutline } from 'react-icons/io5'
 
 const FilmCard = (props: IFilmCardProps) => {
 	const {
@@ -11,6 +12,7 @@ const FilmCard = (props: IFilmCardProps) => {
 		rating,
 		ratingCount,
 		title,
+		views,
 		...rest
 	} = props
 	return (
@@ -72,6 +74,36 @@ const FilmCard = (props: IFilmCardProps) => {
 						}}
 					>
 						<span>{rating.toFixed(1)}</span>
+					</div>
+					<div
+						sx={{
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							p: 2,
+							borderRadius: '5px 0 5px 0',
+						}}
+					>
+						<div
+							sx={{
+								display: 'flex',
+								alignItems: 'center',
+							}}
+						>
+							<span
+								sx={{
+									fontSize: 0,
+								}}
+							>
+								{views}
+							</span>
+							<IoEyeOutline
+								sx={{
+									ml: 1,
+									width: 16,
+								}}
+							/>
+						</div>
 					</div>
 				</a>
 			</Link>

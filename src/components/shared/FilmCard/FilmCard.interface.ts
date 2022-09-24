@@ -11,5 +11,6 @@ export interface IFilmCardProps
 			| 'ratingCount'
 			| 'releaseDate'
 			| 'duration'
+			| 'views'
 		>,
 		Omit<HTMLAttributes<HTMLDivElement>, 'id' | 'title'> {}

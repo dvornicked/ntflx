@@ -92,6 +92,7 @@ const Films = () => {
 						<li key={film.id}>
 							<FilmCard
 								id={film.id}
+								views={film.views}
 								title={film.title}
 								image={film.image}
 								rating={film.rating}
