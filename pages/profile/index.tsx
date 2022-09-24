@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query'
 import { userService } from '../../src/services/user.service'
 import ErrorMessage from '../../src/components/shared/ErrorMessage/ErrorMessage'
 import ProfileSidebar from '../../src/components/screens/Profile/Sidebar/ProfileSidebar'
+import FilmCard from '../../src/components/shared/FilmCard/FilmCard'
 
 const Profile: NextPageAuth = () => {
 	const { user } = useAppSelector(state => state.user)
@@ -30,7 +31,6 @@ const Profile: NextPageAuth = () => {
 					gridTemplateColumns: '300px 1fr',
 					gridTemplateRows: '300px 200px 200px',
 					gridGap: 4,
-					height: '300px',
 					mx: 4,
 				}}
 			>
@@ -87,7 +87,29 @@ const Profile: NextPageAuth = () => {
 						/>
 					)}
 					{favFilms?.data.count ? (
-						favFilms?.data.films.map(film => <p key={film.id}>{film.image}</p>)
+						<ul
+							sx={{
+								display: 'grid',
+								gridTemplateColumns: 'repeat(auto-fill, 200px)',
+								justifyContent: 'space-between',
+								gap: '10px',
+							}}
+						>
+							{favFilms.data.films.map(film => (
+								<li key={film.id}>
+									<FilmCard
+										id={film.id}
+										views={film.views}
+										title={film.title}
+										image={film.image}
+										rating={film.rating}
+										duration={film.duration}
+										releaseDate={film.releaseDate}
+										ratingCount={film.ratingCount}
+									/>
+								</li>
+							))}
+						</ul>
 					) : (
 						<div
 							sx={{

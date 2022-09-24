@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IoClose, IoSearch } from 'react-icons/io5'
 import { Spinner } from 'theme-ui'
 import { useDebounce } from '../../../hooks/useDebounce'
@@ -11,6 +11,9 @@ const Search = (props: ISearchProps) => {
 	const [isLoading, setIsLoading] = useState(false)
 	const debouncedSearchValue = useDebounce(searchValue, 500)
 	const { push, asPath } = useRouter()
+	useEffect(() => {
+		setSearchValue('Search')
+	}, [asPath])
 	return (
 		<div
 			sx={{

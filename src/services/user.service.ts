@@ -26,6 +26,20 @@ const getFavFilmsById = async (id: number) => {
 	return AxiosAuth.get<IFilms>(`${API.favorite}/films/${id}`)
 }
 
+const favFilm = async (id: number) => {
+	return AxiosAuth.put(`${API.favorite}/film`, {
+		filmId: id,
+	})
+}
+
+const getRatedFilms = async () => {
+	return AxiosAuth.get<IFilms>(`${API.rate}/films`)
+}
+
+const getRatedFilmsById = async (id: number) => {
+	return AxiosAuth.get<IFilms>(`${API.rate}/films/${id}`)
+}
+
 const getFavGenres = async () => {
 	return AxiosAuth.get<IGenres>(`${API.favorite}/genres`)
 }
@@ -92,4 +106,7 @@ export const userService = {
 	updateProfileById,
 	updatePasswordById,
 	updateEmailById,
+	getRatedFilms,
+	getRatedFilmsById,
+	favFilm,
 }
