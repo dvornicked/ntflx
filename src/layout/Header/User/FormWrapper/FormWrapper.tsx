@@ -29,6 +29,7 @@ const FormWrapper = forwardRef(function FormWrapper(
 			sx={{
 				display: 'flex',
 				position: 'absolute',
+				zIndex: 3,
 				top: 0,
 				left: 0,
 				right: 0,

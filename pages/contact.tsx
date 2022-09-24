@@ -38,7 +38,7 @@ const Contact = () => {
 					}}
 				>
 					<Image
-						src="/uploads/files/dmes5t-kiqebcms7a.jpg"
+						src="/uploads/files/6ovrti-kiqebcms7a.jpg"
 						alt="Avatar"
 						width="300px"
 						height="300px"

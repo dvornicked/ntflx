@@ -1,4 +1,4 @@
-const API_URL = `${process.env.APP_URL}/api`
+const API_URL = `${process.env.API_URL}`
 
 export const API = {
 	users: `${API_URL}/users`,

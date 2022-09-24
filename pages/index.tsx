@@ -12,17 +12,17 @@ const Home = () => {
 					new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
 				)
 			})
-			.slice(0, 3)
+			.slice(0, 4)
 		const popularFilms = data.films
 			.sort((a, b) => {
 				return b.views - a.views
 			})
-			.slice(0, 3)
+			.slice(0, 4)
 		const featuredFilms = data.films
 			.sort((a, b) => {
 				return b.rating - a.rating
 			})
-			.slice(0, 3)
+			.slice(0, 4)
 		return {
 			newFilms,
 			popularFilms,
@@ -49,7 +49,7 @@ const Home = () => {
 				<ul
 					sx={{
 						display: 'grid',
-						gridTemplateColumns: 'repeat(auto-fill, 200px)',
+						gridTemplateColumns: 'repeat(auto-fit, 200px)',
 						justifyContent: 'space-between',
 						gap: '10px',
 					}}
@@ -76,7 +76,7 @@ const Home = () => {
 				<ul
 					sx={{
 						display: 'grid',
-						gridTemplateColumns: 'repeat(auto-fill, 200px)',
+						gridTemplateColumns: 'repeat(auto-fit, 200px)',
 						justifyContent: 'space-between',
 						gap: '10px',
 					}}
@@ -103,7 +103,7 @@ const Home = () => {
 				<ul
 					sx={{
 						display: 'grid',
-						gridTemplateColumns: 'repeat(auto-fill, 200px)',
+						gridTemplateColumns: 'repeat(auto-fit, 200px)',
 						justifyContent: 'space-between',
 						gap: '10px',
 					}}

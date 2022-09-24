@@ -41,7 +41,7 @@ const RateForm = forwardRef(function FormWrapper(
 			sx={{
 				display: 'flex',
 				position: 'fixed',
-				zIndex: 1,
+				zIndex: 3,
 				top: 0,
 				left: 0,
 				right: 0,

@@ -15,6 +15,7 @@ const SearchListWrapper = (props: ISearchListWrapperProps) => {
 				width: '100%',
 				backgroundColor: '#242424',
 				position: 'absolute',
+				zIndex: 2,
 				top: '58px',
 				left: '0',
 				borderRadius: '0 0 0.5rem 0.5rem',

@@ -4,19 +4,18 @@ const nextConfig = {
 	swcMinify: true,
 	poweredByHeader: false,
 	env: {
-		API_URL: process.env.APP_URL,
-		APP_URL: process.env.APP_API_URL,
+		API_URL: 'https://api.ntflx.ru',
 	},
 
 	async rewrites() {
 		return [
 			{
 				source: '/api/:path*',
-				destination: `${process.env.APP_API_URL}/api/:path*`,
+				destination: `https://api.ntflx.ru/:path*`,
 			},
 			{
 				source: '/uploads/:path*',
-				destination: `${process.env.APP_API_URL}/uploads/:path*`,
+				destination: `https://uploads.ntflx.ru/:path*`,
 			},
 		]
 	},

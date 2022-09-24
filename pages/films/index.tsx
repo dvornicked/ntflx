@@ -13,7 +13,10 @@ const Films = () => {
 	const { data, isLoading, error, isError } = useQuery(
 		['GET_FILMS', debouncedSearchValue],
 		async () => {
-			const { data } = await filmService.getAll({ title: debouncedSearchValue })
+			const { data } = await filmService.getAll({
+				title: debouncedSearchValue,
+				limit: 100,
+			})
 			return data
 		},
 	)
