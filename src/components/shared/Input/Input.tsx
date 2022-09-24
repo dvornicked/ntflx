@@ -1,6 +1,6 @@
 import { IInputProps } from './Input.interface'
 
-const Input = <T,>(props: IInputProps<T>) => {
+const Input = <T extends Record<string, any>>(props: IInputProps<T>) => {
 	const { name, register, rules, error, ...rest } = props
 	return (
 		<div

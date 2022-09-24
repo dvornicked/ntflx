@@ -5,7 +5,7 @@ import {
 	UseFormRegister,
 } from 'react-hook-form'
 
-export interface IInputProps<T>
+export interface IInputProps<T extends Record<string, any>>
 	extends React.InputHTMLAttributes<HTMLInputElement> {
 	register: UseFormRegister<T>
 	name: Path<T>
