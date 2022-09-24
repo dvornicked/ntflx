@@ -1,6 +1,6 @@
 import { ITextareaProps } from './Textarea.interface'
 
-const Textarea = <T,>(props: ITextareaProps<T>) => {
+const Textarea = <T extends Record<string, any>>(props: ITextareaProps<T>) => {
 	const { name, register, rules, error, ...rest } = props
 
 	return (
